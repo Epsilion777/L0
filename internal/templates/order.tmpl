@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Info</title>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            margin: 0;
+
+            font-family: 'Golos Text', sans-serif;
+
+            background: #6a11cb;
+            background: -webkit-linear-gradient(to right, rgb(218, 36, 208), rgb(106, 17, 203));               
+            background: linear-gradient(to right, rgba(218, 36, 208, 1), rgba(106, 17, 203, 1));
+        }
+        h1 {
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+        h3 {
+            color: #FFFFFF;
+            margin-bottom: 5px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-left: 10px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .order {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .delivery,
+        .payment,
+        .items {
+            margin-left: 20px;
+            padding: 10px;
+            border: 1px solid #CED4DA;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    {{ $index := 0 }}
+    <h1>Info about order:</h1>
+    <div class ="order">
+        <h2>Order UID: {{ .Order.OrderUID }}</h2>
+        <ul>
+            <li><b>Track Number:</b> {{ .Order.TrackNumber }}</li>
+            <li><b>Entry:</b> {{ .Order.Entry }}</li>
+            <li><b>Locale:</b> {{.Order.Locale }}</li>
+            <li><b>Internal Signature:</b> {{ .Order.InternalSignature }}</li>
+            <li><b>Customer ID:</b> {{ .Order.CustomerID }}</li>
+            <li><b>Delivery Service:</b> {{ .Order.DeliveryService }}</li>
+            <li><b>Shardkey:</b> {{ .Order.Shardkey }}</li>
+            <li><b>SmID:</b> {{ .Order.SmID }}</li>
+            <li><b>Date Created:</b> {{ .Order.DateCreated }}</li>
+            <li><b>Oof Shard:</b> {{ .Order.OofShard }}</li>
+            <br></br>
+            <li>
+            <div class = "delivery">
+                <h3>Delivery</h3>
+                <ul>
+                    <li><b>Name:</b> {{ .Order.Delivery.Name }}</li>
+                    <li><b>Phone:</b> {{ .Order.Delivery.Phone }}</li>
+                    <li><b>Zip:</b> {{ .Order.Delivery.Zip }}</li>
+                    <li><b>City:</b> {{ .Order.Delivery.City }}</li>
+                    <li><b>Address:</b> {{ .Order.Delivery.Adress }}</li>
+                    <li><b>Region:</b> {{ .Order.Delivery.Region }}</li>
+                    <li><b>Email:</b> {{ .Order.Delivery.Email }}</li>
+                </ul>
+                </div>
+            </li>
+            <li>
+            <div class = "payment">
+                <h3>Payment</h3>
+                <ul>
+                    <li><b>Transaction:</b> {{ .Order.Payment.Transaction }}</li>
+                    <li><b>Request ID:</b> {{ .Order.Payment.RequestID }}</li>
+                    <li><b>Currency:</b> {{ .Order.Payment.Currency }}</li>
+                    <li><b>Provider:</b> {{ .Order.Payment.Provider }}</li>
+                    <li><b>Amount:</b> {{ .Order.Payment.Amount }}</li>
+                    <li><b>Payment DT:</b> {{ .Order.Payment.PaymentDT }}</li>
+                    <li><b>Bank:</b> {{ .Order.Payment.Bank }}</li>
+                    <li><b>Delivery Cost:</b> {{ .Order.Payment.DeliveryCost }}</li>
+                    <li><b>Goods Total:</b> {{ .Order.Payment.GoodsTotal }}</li>
+                    <li><b>Custom Fee:</b> {{ .Order.Payment.CustomFee }}</li>
+                </ul>
+                </div>
+            </li>
+            <li>
+            <div class = "items">
+                <h3>Items</h3>
+                <ul>
+                    {{ range $index, $item := .Order.Items }}
+                        <li><b>Item {{ $index }}:</b> {{ $item.Name }}</li>
+                        <li><b>Price:</b> {{ $item.Price }}</li>
+                        <li><b>Sale:</b> {{ $item.Sale }}</li>
+                        <li><b>Size:</b> {{ $item.Size }}</li>
+                        <li><b>Total Price:</b> {{ $item.TotalPrice }}</li>
+                        <li><b>Brand:</b> {{ $item.Brand }}</li>
+                        <li><b>Status:</b> {{ $item.Status }}</li>
+						<br></br>
+                    {{ end }}
+                </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <br></br>
+</body>
+</html>

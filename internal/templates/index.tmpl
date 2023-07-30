@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orders</title>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            margin: 0;
+
+            font-family: 'Golos Text', sans-serif;
+
+            background: #6a11cb;
+            background: -webkit-linear-gradient(to right, rgb(218, 36, 208), rgb(106, 17, 203));               
+            background: linear-gradient(to right, rgba(218, 36, 208, 1), rgba(106, 17, 203, 1));
+        }
+        h1 {
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .order {
+            border: 3px solid #CED4DA;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Orders:</h1>
+    {{ range $key, $value := .OrderCache }}
+    <div class ="order">
+        <a href="/orders/{{$key}}"><h2>Order UID: {{ $key }}</h2></a>
+    </div>
+    <br></br>
+    {{ end }}
+</body>
+</html>
