@@ -66,17 +66,20 @@ func generateOrder() model.Order {
 
 func queueOrders(lenQueue, delaySec int, channel string, sc stan.Conn) {
 	for i := 0; i < lenQueue; i++ {
-		order := generateOrder()
-		data, _ := json.Marshal(order)
-
 		// // fake data
 		// invalidStrings := []string{
 		// 	"invalid data",
 		// 	"",
 		// 	"99a123010212030",
 		// }
-		// data := []byte(invalidStrings[rand.Intn(len(invalidStrings))])
+		// for _, v := range invalidStrings {
+		// 	if err := sc.Publish(channel, []byte(v)); err != nil {
+		// 		log.Fatalf("Error sending the message: %v", err)
+		// 	}
+		// }
 
+		order := generateOrder()
+		data, _ := json.Marshal(order)
 		// Sending a message to the channel
 		if err := sc.Publish(channel, data); err != nil {
 			log.Fatalf("Error sending the message: %v", err)
