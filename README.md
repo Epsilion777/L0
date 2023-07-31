@@ -54,4 +54,4 @@ API предоставляет следующие ресурсы:
 ```
 wrk -t12 -c400 -d30s https://655e-2a02-2168-8c51-ba00-4570-fbd-deaa-8a32.ngrok-free.app/orders/61325029-5fe9-4c28-b134-1aae629eccb6
 ```
-![test](https://i.ibb.co/GVb6jBY/Screenshot-1.png)
+![test](https://i.ibb.co/YPhKG6h/Screenshot-2.png)
