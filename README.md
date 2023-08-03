@@ -11,7 +11,7 @@ docker-compose up
 ```
 3. Примените миграции базы данных с помощью утилиты Migrate
 ```
-migrate -path ./schema -database 'postgres://postgres:qwerty@localhost:5436/wb?sslmode=disable' up
+migrate -path ./schema -database 'postgres://postgres:123321@localhost:5436/wb?sslmode=disable' up
 ```
 4. Запустите сервис, используя команду
 ```
